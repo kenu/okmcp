@@ -1,14 +1,18 @@
 {
   "name": "okmcp-server",
   "version": "1.0.0",
-  "description": "OKMCP Server",
+  "description": "OKMCP Server - MCP 표준을 따르는 서버",
   "main": "index.js",
   "scripts": {
-    "dev": "node index.js"
+    "start": "node index.js",
+    "dev": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^5.2.1"
-  }
+    "express": "^5.2.1",
+    "ws": "^8.18.0"
+  },
+  "keywords": ["mcp", "server", "api", "websocket"]
 }

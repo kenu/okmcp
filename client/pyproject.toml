@@ -1,9 +1,17 @@
 [project]
-name = "client"
-version = "0.1.0"
-description = "Add your description here"
+name = "okmcp-client"
+version = "1.0.0"
+description = "OKMCP Client - MCP 서버와 통신하는 클라이언트"
 readme = "README.md"
-requires-python = ">=3.14"
+requires-python = ">=3.8"
 dependencies = [
     "requests>=2.32.5",
+    "websockets>=12.0",
 ]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project.scripts]
+okmcp-client = "main:main"
