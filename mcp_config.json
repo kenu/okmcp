@@ -1,0 +1,43 @@
+{
+  "mcpServers": {
+    "github-mcp-server": {
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "GITHUB_PERSONAL_ACCESS_TOKEN",
+        "ghcr.io/github/github-mcp-server"
+      ],
+      "command": "docker",
+      "disabled": false,
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "YOUR_GITHUB_PERSONAL_ACCESS_TOKEN"
+      }
+    },
+    "puppeteer": {
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-puppeteer"
+      ],
+      "command": "npx",
+      "disabled": false,
+      "env": {}
+    }
+  },
+    "local-server": {
+      "command": "curl",
+      "args": [
+        "-X",
+        "POST",
+        "http://localhost:3000/mcp",
+        "-H",
+        "Content-Type: application/json",
+        "-d",
+        "{\"tool\":\"$TOOL\",\"method\":\"$METHOD\",\"params\":$PARAMS}"
+      ],
+      "disabled": false,
+      "env": {}
+    }
+  }
+}

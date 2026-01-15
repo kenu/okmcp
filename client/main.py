@@ -146,38 +146,10 @@ class MCPClient:
             self.websocket = None
             logger.info("MCP 서버 연결 종료")
 
-async def main():
-    # HTTP 연결 예시
-    client = MCPClient("http://localhost:3000", use_websocket=False)
-    
-    # 서버 연결 확인
-    if await client.connect():
-        print("✅ 서버 연결 성공!")
-        
-        # 사용 가능한 도구 목록 조회
-        tools = await client.list_tools()
-        print(f"📋 사용 가능한 도구: {len(tools)}개")
-        for tool in tools:
-            print(f"  - {tool.get('name', '알 수 없음')}: {tool.get('description', '설명 없음')}")
-        
-        try:
-            # 계산기 도구 사용
-            result = await client.call_tool("calculator", "add", [5, 3])
-            print(f"🧮 5 + 3 = {result}")
-            
-            result = await client.call_tool("calculator", "multiply", [4, 7])
-            print(f"🧮 4 × 7 = {result}")
-            
-            # 날씨 도구 사용
-            weather = await client.call_tool("weather", "getTemperature", ["서울"])
-            print(f"🌤️ {weather}")
-            
-        except Exception as e:
-            print(f"❌ 도구 호출 실패: {e}")
-    else:
-        print("❌ 서버 연결 실패!")
-    
-    await client.disconnect()
+# 사용 예시
+client = MCPClient("http://localhost:3000")
+result = client.call_tool("calculator", "add", [5, 3000])
+print(f"5 + 3 = {result}")
 
-if __name__ == "__main__":
-    asyncio.run(main())
+weather = client.call_tool("weather", "getTemperature", ["서울"])
+print(weather)
